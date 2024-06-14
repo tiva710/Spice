@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include('partials/head.ejs') %>
+  <title>Spice | Sign Up</title>
+
+</head>
+<body id = "signUpBody">
+  <%- include('partials/nav.ejs') %>
+
+  <form id="login-form" class="form-inline text-center" action="/login" method="POST">
+    <div class="login-card shadow rounded">
+      <h1 class="login-text">Login</h1>
+      <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
+      <div class="input-group mb-2 mr-sm-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">@</div>
+       </div>
+        <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="username" name="username">
+      </div>
+      <input type="password" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="password" name="password">
+      
+      
+  
+      <div class="form-check mb-2 mr-sm-2">
+        <input id="checkbox-form" class="form-check-input" type="checkbox" onchange="changeLogin()">
+        <label class="form-check-label text-primary" for="checkbox-form">
+          Don't have an account? <u id="register">Register</u>
+        </label>
+      </div>
+      <button id="button-form" type="submit" class="btn btn-primary mb-2">Login</button>
+    </div>
+  </form>
+
+  <script src="/js/script.js"></script>
+  <%- include('partials/footer.ejs') %>
+</body>
+</html>

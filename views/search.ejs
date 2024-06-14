@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include('partials/head.ejs') %>
+  <title>Spice | Search</title>
+
+</head>
+<body id = "searchBody">
+  <%- include('partials/nav.ejs') %>
+    <br><br>
+    <div id = "container">
+      <div>
+        Search for recipes by name or ingredients!
+        (Up to 10 results)
+        <form action = "/recipeSearch">
+          <input type = "text" placeholder="ex: cake" name = "keyword">
+          <br>
+          <input type = "radio" name = "radio" value = "food" checked> Food 
+          <input type = "radio" name = "radio" value = "drink"> Drink
+          <br>
+          <button type = "submit" class="btn btn-primary"> Search </button>
+        </form>
+      </div>
+      <br><br>
+      <div>
+        OR
+      </div>
+      <br>
+      <div>
+        Generate random recipes
+        <form action = "/randRecipes">
+          <button class="btn btn-primary"> GO! </button>
+        </form>
+      </div>
+    </div>
+
+  <br><br>
+
+  <!-- SEARCH -->
+  <div id = "searchDiv">
+    <% if(response){ %>
+       <%  if(selection == "food"){ %>
+          <% for(let i = 0; i < 9; i++){ %>
+          <div class = "resultsDiv card mb-3 shadow rounded">
+             <h5 class="card-header text-center">             
+             <b>
+             <%= response[i].title %>
+             </b>
+             </h5>
+            <br>
+            
+            <div class="px-3">
+             Servings: 
+             <%= response[i].servings %>
+             <br>
+             Ingredients: 
+             <br>
+              <% let strings = response[i].ingredients.split("|") %>
+             <% for(let k = 0; k < strings.length; k++){ %>
+                &emsp; 
+             <%= strings[k] %>
+               <br>
+            <% } %>
+              Instructions: 
+              <br>
+              <%= response[i].instructions %>
+              <br>
+              <form action="/addRecipe" method="POST">
+                <input type="hidden" name="title" value="<%= response[i].title %>">
+                <input type="hidden" name="servings" value="<%= response[i].servings %>">
+                <input type="hidden" name="ingredients" value="<%= response[i].ingredients %>">
+                <input type="hidden" name="instructions" value="<%= response[i].instructions %>">
+                <div class="text-center mt-3">
+                  <button type="submit" class="btn btn-primary">Add Recipe </button> 
+                </div>
+              </div>
+              </form> 
+
+                
+              <br><br>
+              </div>
+               <% } %>
+              <% }else if(selection == "drink"){ %>
+              
+              <% for (let i = 0; i < 9; i++){ %>
+              <% if(!response[i]){ %>
+                <% break; %>
+              <% } %>
+              <div class = "resultsDiv card mb-3 shadow rounded">
+              <h5 class="card-header text-center"> 
+              <b>
+                <%= response[i].name %>
+              </b>
+              </h5>
+              <br>
+              <div class="px-3">
+              Ingredients: 
+              <br> 
+              <% for(let k = 0; k < response[i].ingredients.length; k++) { %>
+                &emsp;
+              <%= response[i].ingredients[k] %>  
+                <br>
+              <% } %>
+                Instructions: 
+                <br> 
+                <%= response[i].instructions %>
+                <br> 
+                <form action="/addDrink" method="POST">
+                <input type="hidden" name="name" value="<%= response[i].name %>">
+                <input type="hidden" name="ingredients" value="<%= response[i].ingredients %>">
+                <input type="hidden" name="instructions" value="<%= response[i].instructions %>">
+                <div class="text-center p-3">
+                <button type="submit" class="btn btn-primary">Add to Cookbook </button> 
+                </div>
+                </div>
+              </form>
+                </div>
+              <br><br><br>
+            <% } %>
+            
+        <% } %>
+        
+    <% } %>
+  </div>
+          
+  <!-- RANDOM -->
+  <div class = "container">
+    <div class = "column1">
+       <% if(drinkOne){ %>          
+          Drink name: 
+          <b>
+          <%= drinkOne.name.charAt(0).toUpperCase() + drinkOne.name.slice(1) %>
+          </b>
+          <br>
+          Ingredients needed: 
+          <br>
+          <% for(let i = 0; i < drinkOne.ingredients.length; i++){ %>
+         &emsp;
+            <%= drinkOne.ingredients[i]%>   
+            <br>
+          <% } %>
+            <br>
+            Instructions: 
+            <br>
+            <%= drinkOne.instructions%> 
+            <br>
+            <form action="/addDrink" method="POST">
+                <input type="hidden" name="name" value="<%= drinkOne.name.charAt(0).toUpperCase() + drinkOne.name.slice(1) %>">
+                <input type="hidden" name="ingredients" value="<%= drinkOne.ingredients %>">
+                <input type="hidden" name="instructions" value="<%= drinkOne.instructions %>">
+                <button type="submit" class="btn btn-primary">Add to Cookbook </button> 
+                <br>
+              </form> 
+      <% } %> 
+        <br>
+        <%= line %>
+        <% if(recipeOne){ %> 
+        <div>
+          Recipe name: 
+          <b>
+            <%= recipeOne.title %>
+          </b>
+          <br>
+          Servings: 
+          <%= recipeOne.servings %>
+          <br> 
+          Ingredients needed: 
+          <br> 
+             <% let strings = recipeOne.ingredients.split("|") %>
+          <% for(let i = 0; i < strings.length; i++){ %>
+            &emsp;
+            <%= strings[i] %>   
+            <br>
+          <% } %>
+          Instructions:
+          <br>
+          <%= recipeOne.instructions %>
+          <br> 
+          <form action="/addRecipe" method="POST">
+                <input type="hidden" name="title" value="<%= recipeOne.title %>">
+                <input type="hidden" name="servings" value="<%= recipeOne.servings %>">
+                <input type="hidden" name="ingredients" value="<%= recipeOne.ingredients %>">
+                <input type="hidden" name="instructions" value="<%= recipeOne.instructions %>">
+                <button type="submit" class="btn btn-primary">Add to Cookbook </button> 
+              </form>
+        </div>
+        <% } %>
+    </div>
+    <div class = "column2">
+      <% if(drinkTwo){ %>
+        Drink name:
+        <b>
+        <%= drinkTwo.name.charAt(0).toUpperCase() + drinkTwo.name.slice(1) %>
+        </b>
+        <br>
+        <% for(let i = 0; i < drinkOne.ingredients.length; i++){ %>
+         &emsp;
+          <%= drinkTwo.ingredients[i]%>   
+          <br>
+        <% } %>
+        <br>
+        Instructions: 
+        <br>
+        <%= drinkTwo.instructions%> 
+        <br>
+        <form action="/addDrink" method="POST">
+                <input type="hidden" name="name" value="<%= drinkTwo.name.charAt(0).toUpperCase() + drinkTwo.name.slice(1) %>">
+                <input type="hidden" name="ingredients" value="<%= drinkTwo.ingredients %>">
+                <input type="hidden" name="instructions" value="<%= drinkTwo.instructions %>">
+                <button type="submit" class="btn btn-primary">Add to Cookbook </button> 
+                <br>
+              </form> 
+      <% } %> 
+      <br>
+      <%= line %>
+      <div>
+        <% if(recipeTwo){ %>
+          Recipe name: 
+          <b>
+            <%= recipeTwo.title %>
+          </b>
+          <br>
+          Servings: 
+          <%= recipeTwo.servings %>
+          <br> 
+          Ingredients needed: 
+          <br> 
+             <% let strings = recipeTwo.ingredients.split("|") %>
+          <% for(let i = 0; i < strings.length; i++){ %>
+            &emsp;
+            <%= strings[i] %>   
+            <br>
+          <% } %>
+          Instructions:
+          <br>
+          <%= recipeTwo.instructions %>
+          <br> 
+          <form action="/addRecipe" method="POST">
+                <input type="hidden" name="title" value="<%= recipeTwo.title %>">
+                <input type="hidden" name="servings" value="<%= recipeTwo.servings %>">
+                <input type="hidden" name="ingredients" value="<%= recipeTwo.ingredients %>">
+                <input type="hidden" name="instructions" value="<%= recipeTwo.instructions %>">
+                <button type="submit" class="btn btn-primary">Add to Cookbook </button> 
+              </form>
+        <% } %>
+        
+      </div>
+    </div>
+  </div>
+
+  <%- include('partials/footer.ejs') %>
+</body>
+</html>

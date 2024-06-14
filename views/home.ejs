@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include('partials/head.ejs') %>
+  <title>Spice | Home</title>
+
+</head>
+<body>
+  <%- include('partials/nav.ejs') %>
+  <h1 class="login-text text-center mt-3">Welcome to Spice</h1>
+  <div class="resultsDiv card p-3 shadow rounded">
+    <p>
+      If you're someone who loves to cook and experiment with different flavors, this is the perfect place. Whether you're a beginner cook or a seasoned pro, this website has something for everyone. From quick and easy recipes that can be made in minutes to more elaborate dishes that require some time and effort, you'll find a recipe that suits your taste and skill level.
+But it's not just about the recipes. You'll find all the information you need to create delicious dishes and drinks here.
+    </p>
+  </div>
+
+    
+  <h2 class="login-text text-center mt-3">Recommended Recipes</h2>
+
+  <div class="rec-recipe">
+    <div class="card shadow rounded" style="width: 18rem;">
+       <form action = "/addRecipe" method = "POST">
+      <img src="https://spoonacular.com/recipeImages/579247-556x370.jpg" class="card-img-top" alt="Red Velvet Cake">
+      <div class="card-body text-center">
+        <h5 class="card-title text-center">Red Velvet Cake</h5>
+        <p class="card-text">
+          Your standard red velvet cake done right.
+          Doesn't push the boundaries but in this case that is a plus. The great flavors of the cake are the stars of the show and aren't trying to be covered up by unecessary flavors.
+        </p>
+        <button class = "btn btn-primary"> Add Recipe </button>
+        <p class="card-text mt-2"><small class="text-muted">Recommended by Josue-SR</small></p>
+
+        <input type = "hidden" name = "title" value = "Red Velvet Cake">
+        <input type = "hidden" name = "servings" value = "12 servings">
+        <input type = "hidden" name = "ingredients" value = "1 1/2 c Sugar|1 c Butter|3 Eggs|1 tb Butter extract|2 oz Red food coloring|2 1/2 c Cake flour|2 tb Cocoa|1 c Buttermilk|1 ts Baking soda|1 ts Vinegar">
+        <input type = "hidden" name = "instructions" value = "Cream butter and sugar until very light and fluffy. Add eggs, one at a time, beating well after each addition. Then add both extract and coloring. Mix flour and cocoa, be sure all cocoa lumps are mashed; then add this to the butter mixture. Stir real well; add buttermilk, again mixing well. Combine soda and vinegar in a small cup and pour over batter mixture; mix real well. Pour in pans. Bake at 350 degrees for 25 minutes. Let cake cook completely before frosting.">
+      </form>
+      </div>
+    </div>
+  
+    <div class="card shadow rounded" style="width: 18rem;">
+      <form action = "/addRecipe" method = "POST">
+      <img src="/img/ItalianGrilledCheese.png" class="card-img-top" alt="Red Velvet Cake">
+      <div class="card-body text-center">
+        <h5 class="card-title text-center">Italian Grilled Cheese</h5>
+        <p class="card-text">
+        A must try for anyone who is a fan of cheese.
+        Pairs well with any sort of tomato dip or tomato based side dish. The Italian herbs make this more complex than your average grilled cheese.
+        </p>
+        <button class = "btn btn-primary"> Add Recipe </button>
+        <p class="card-text mt-2"><small class="text-muted">Recommended by Dale</small></p>
+
+        <input type = "hidden" name = "title" value = "Italian Grilled Cheese">
+        <input type = "hidden" name = "servings" value = "4 Servings">
+        <input type = "hidden" name = "ingredients" value = "4 sl Italian bread; 1 inch thick|4 sl Mozzarella cheese or provolone cheese|3 Eggs|1/2 c Milk|3/4 ts Italian seasoning|1/2 ts Garlic salt|2/3 c Italian-seasoned bread crumbs">
+        <input type = "hidden" name = "instructions" value = "Cut a 3-inch pocket in each slice of bread; place a slice of cheese in each pocket. In a bowl, beat eggs, milk, Italian seasoning and garlic salt; soak bread for 2 minutes on each side. Coat with bread crumbs. Cook on a greased hot griddle until golden brown on both sides.">
+      </form>
+      </div>
+    </div>
+
+    <div class="card shadow rounded" style="width: 18rem;">
+      <form action = "/addDrink" method = "POST">
+      <img src="https://www.liquor.com/thmb/0tL6ShI57Emm7ClKKQTgAsaYf7c=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/lemon-drop-720x720-primary-28bff9ae20eb49a1acdeb9221c5ff8e2.jpg" class="card-img-top" alt="Lemon Drop">
+      <div class="card-body text-center">
+        <h5 class="card-title text-center">Lemon Drop</h5>
+        <p class="card-text">
+          Classic Drink, very refreshing. Would recommend if you like sweet and light sour drinks.
+        </p>
+        <button class="btn btn-primary">Add Recipe</button>
+        <p class="card-text mt-2"><small class="text-muted">Recommended by Edgar</small></p>
+        <input type = "hidden" name = "name" value = "Lemon Drop">
+        <input type = "hidden" name = "ingredients" value = "3 cl vodka citron | 2 cl triple sec | 1.5 cl lemon juice">
+        <input type = "hidden" name = "instructions" value = "Pour all ingredients into cocktail shaker, shake well with ice, strain into chilled cocktail glass. Garnish with sugar rim around the glass. *">
+        </form>
+      </div>
+    </div>
+
+    
+    <div class="card shadow rounded" style="width: 18rem;">
+      <form action = "/addRecipe" method = "POST">
+      <img src="https://cookingwithcocktailrings.com/wp-content/uploads/2022/11/Bacon-Wrapped-Jalapeno-Poppers-41.jpg" class="card-img-top" alt="Jalapeno Poppers">
+      <div class="card-body text-center">
+        <h5 class="card-title text-center">Jalapeno Poppers</h5>
+        <p class="card-text">
+          Great on your own or with frends. Definitely worth a spot in your cookbook. 
+        </p>
+        <button class="btn btn-primary">Add Recipe</button>
+        <p class="card-text mt-2"><small class="text-muted">Recommended by Tiva</small></p>
+        <input type = "hidden" name = "title" value = "Bacon Wrapped Jalapeno Poppers">
+        <input type = "hidden" name = "servings" value = "12 Servings">
+        <input type = "hidden" name = "ingredients" value = "1 2 pounds fresh jalapeno peppers|1 2 8oz. cream cheese*|1 lb Bacon** (each slice cut in half)">
+        <input type = "hidden" name = "instructions" value = "Split, seed and wash jalapeno peppers. Spread cream cheese in each half of split peppers, either leave in halves *OR* combine the two halves to make a whole popper. Wrap each half/whole jalapeno with a bacon slice cut in half. Place each bacon wrapped jalapeno on a cookie sheet..bake at 250 til bacon is done, cool and serve.(Cheese will boil out if oven is set to high) This is even better cold the next day!!! *I have used fat free and low fat cream cheese, the amount varies as to how much cheese each individual likes in their jalapeno. *">
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+  <h2 class="login-text text-center mt-3">Search Recipes</h2>
+
+  <div class="resultsDiv card p-3 shadow rounded text-center">
+    <p>
+      Here you can search for any kind of food recipe or cocktail recipe.
+    </p>
+
+      <button class="btn btn-primary" onclick="window.location.href = '/search'">Search</button>
+
+  </div>
+
+    <h2 class="login-text text-center mt-3">Your Recipes</h2>
+
+  <div class="resultsDiv card p-3 mb-5 shadow rounded text-center">
+    <p>
+      Here you can view the recipes you have added to your cookbook. Your cookbook is where all your favorite recipes are stored.
+    </p>
+
+      <button class="btn btn-primary" onclick="window.location.href = '/cookbook'">View Recipes</button>
+
+  </div>
+    
+  <%- include('partials/footer.ejs') %>
+</body>
+</html>

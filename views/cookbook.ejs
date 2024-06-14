@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include('partials/head.ejs') %>
+  <title>Spice | Cookbook </title>
+  
+</head>
+<body>
+  <%- include('partials/nav.ejs') %> 
+    
+  <h1 class="login-text text-center mt-3">My Recipes</h1>
+    
+  <% if(hasRecipes) { %>
+               
+    <% for (let i = 0; i < recipes.length; i++) { %>
+    <div id="cookbook-card" class="card mb-3 shadow rounded">
+      <h5 class="login-text card-header text-center"><%= recipes[i].name %></h5>
+      <div class="card-body">
+        <h5>Ingredients:</h5>
+        <p class="card-text"><%= recipes[i].ingrInfo %></p>
+        <h5>Instructions:</h5>
+        <p class="card-text"><%= recipes[i].instructions %></p>
+        <h5>Servings:</h5>
+        <p class="card-text"><%= recipes[i].servings %></p>
+        <h5>Type:</h5>
+        <p>Food</p>
+      </div>
+      <div class="card-footer text-center">
+        <a href="/cookbook/recipe_delete?recipe_id=<%= recipes[i].recipe_id %>" class="btn btn-danger">Remove</a>
+      </div>
+    </div>
+    <% } %>
+      
+  
+     <% for (let i = 0; i < cocktails.length; i++) { %>
+    <div id="cookbook-card" class="card mb-3 shadow rounded">
+      <h5 class="login-text card-header text-center"><%= cocktails[i].name %></h5>
+      <div class="card-body">
+        <h5>Ingredients:</h5>
+        <p class="card-text"><%= cocktails[i].ingrInfo %></p>
+        <h5>Instructions:</h5>
+        <p class="card-text"><%= cocktails[i].instructions %></p>
+        <h5>Type:</h5>
+        <p>Drink</p>
+      </div>
+      <div class="card-footer text-center">
+        <a href="/cookbook/cocktail_delete?cocktail_id=<%= cocktails[i].cocktail_id %>" class="btn btn-danger">Remove</a>
+      </div>
+    </div>
+    <% } %>
+  <% } else {%>
+    <h3 id="cookbook-warning" class="text-center mt-5">No Saved Recipes</h3>
+  <% } %>
+  <%- include('partials/footer.ejs') %>
+</body>
+</html>

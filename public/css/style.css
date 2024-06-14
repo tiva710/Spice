@@ -1,0 +1,139 @@
+.navbar {
+  background-color: #148DEB
+}
+
+.nav-item:hover {
+  background: #74a7fe;
+}
+
+.card img {
+  height: 210px; 
+  width: 100%; 
+  overflow: hidden; 
+}
+
+.nav-item {
+  border-radius: 10px;
+}
+
+.dropdown-menu:hover .dropdown-item:hover {
+  background-color: #0DCAF0;
+}
+
+.rec-recipe {
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 2%;
+  display: flex;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+#spice-icon {
+  height:47px;
+  width:140px;
+}
+
+#cookbook-title {
+  font-family: 'Cairo', sans-serif;
+}
+
+#cookbook-warning {
+  font-family: 'Cairo', sans-serif;
+  height: 60vh;
+}
+
+#cookbook-card {
+  margin-left:10%;
+  margin-right: 10%;
+}
+
+.card {
+  margin-left:2%;
+  margin-right: 2%;
+  margin-top: 3%;
+}
+
+a{
+  text-decoration: none;
+}
+
+
+.container{
+  margin: 0 auto; 
+  display: flex;
+}
+
+.column1{
+  width: 50%; 
+  float: left; 
+  padding: 10px; 
+}
+
+.column2{
+  width: 50%; 
+  float: right; 
+  padding: 10px;
+}
+
+#searchBody{
+  margin: 0 auto;
+}
+
+
+.form-inline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.login-card {
+  padding: 50px;
+}
+
+.login-text {
+  font-family: 'Cairo', sans-serif;
+  color: #3a88fe;
+}
+
+#register:hover {
+  color: #3a88fe;
+}
+
+#signUpBox {
+  background-color: #C9DDFF;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px white;
+  border: 1px solid white;
+  text-align: center;
+}
+
+#container{
+  text-align: center; 
+}
+
+.footer{
+  text-align: center;
+  font-size: 15px;
+}
+
+#footerImg{
+  width: 10%;
+  height: 5%;
+}
+
+#searchDiv{
+  display: flex; 
+  flex-direction: column; 
+  /* align-items: center;  */
+}
+
+.resultsDiv{
+  display: inline-block; 
+  text-align: left; 
+  width: 70%;
+
+  margin: 0 auto; 
+}
